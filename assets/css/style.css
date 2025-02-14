@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+.container{
+    max-width: 1320px;
+    margin: auto;
+}
+
+.box{
+    width: 450px;
+    height: 400px;
+    padding: 30px 30px;
+    background-color: white;
+    border: 1px solid black;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.fs{
+    font-size: 30px;
+}
+
+.convert{
+    gap: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
