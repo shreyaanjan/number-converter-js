@@ -12,11 +12,10 @@
 }
 
 .box{
-    width: 450px;
-    height: 400px;
+    width: 500px;
+    height: 450px;
     padding: 30px 30px;
     background-color: white;
-    border: 1px solid black;
     background: rgba(255, 255, 255, 0.25);
 }
 
@@ -29,4 +28,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+body{
+    background-color: #B2EAF5;
+}
+
+#con{
+    background-color: #B2EAF5;
 }
