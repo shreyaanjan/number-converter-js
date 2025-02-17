@@ -12,8 +12,6 @@
 }
 
 .box{
-    width: 500px;
-    height: 450px;
     padding: 30px 30px;
     background-color: white;
     background: rgba(255, 255, 255, 0.25);
@@ -31,9 +29,9 @@
 }
 
 body{
-    background-color: #B2EAF5;
+    background-color: #cadcfc;
 }
 
 #con{
-    background-color: #B2EAF5;
+    background-color: #00246b;
 }
