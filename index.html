@@ -32,7 +32,6 @@
                     <div class="pb-2 col-md-6">
                         <p class="m-0 p-0 fw-semibold">To : </p>
                         <select class="form-select" id="unit-2">
-
                             <option value="">Select Number Type</option>
                             <option value="2">Binary</option>
                             <option value="8">Octal</option>
@@ -42,12 +41,13 @@
                     </div>
                 </div>
                 <div class="pb-4">
-                    <button type="button" class="btn btn-primary w-100 text-white border-0 btn-lg" id="con">Convert</button>
+                    <button type="button" class="btn btn-primary w-100 text-white border-0 btn-lg"
+                        id="con">Convert</button>
                 </div>
                 <div>
                     <p class="m-0 p-0 fw-semibold">Converted <span id="op-type"></span> Number :</p>
                     <input type="text" id="convNum" class="w-100 form-control">
-                </div> 
+                </div>
             </div>
         </div>
     </div>
@@ -64,9 +64,9 @@
             $("#con").on("click", () => {
                 let u1 = parseInt(unit1.value);
                 let u2 = parseInt(unit2.value);
-                let number = parseInt(num.value);
+                let number = num.value.trim();
 
-                if(num.value == ""){
+                if (number === "") {
                     Swal.fire({
                         text: "Enter Number !",
                         icon: "warning",
@@ -80,14 +80,59 @@
                         icon: "warning",
                     });
                     return;
-                }   
+                }
 
-                if(unit1.value == unit2.value){
+                if (unit1.value === unit2.value) {
                     Swal.fire({
-                        text: "Same Unit Cannot Be Selected !",
+                        text: "Same Number Type Cannot Be Selected !",
                         icon: "warning",
                     });
                     return;
+                }
+
+                switch (u1) {
+                    case 2:
+                        if (!/^[01]+$/.test(number)) {
+                            Swal.fire({
+                                icon: "error",
+                                text: "Enter a Valid Binary Number (only 0s and 1s) !",
+                            });
+                            return;
+                        }
+                        break;
+                    case 8:
+                        if (!/^[0-7]+$/.test(number)) {
+                            Swal.fire({
+                                icon: "error",
+                                text: "Enter a Valid Octal Number (digits from 0 to 7) !",
+                            });
+                            return;
+                        }
+                        break;
+                    case 10:
+                        if (!/^\d+$/.test(number)) {
+                            Swal.fire({
+                                icon: "error",
+                                text: "Enter a Valid Decimal Number (only digits)!",
+                            });
+                            return;
+                        }
+                        break;
+                    case 16:
+                        if (!/^[0-9A-Fa-f]+$/.test(number)) {
+                            Swal.fire({
+                                icon: "error",
+                                text: "Enter a valid Hexadecimal Number (digits 0-9 and A-F) !",
+                            });
+                            return;
+                        }
+                        break;
+                    default:
+                        Swal.fire({
+                            icon: "error",
+                            text: "Invalid Number Type Selected !",
+                        });
+                        return;
                 }
 
                 let decimalNumber = parseInt(number, 10);
@@ -130,9 +175,7 @@
                         break;
                     }
                 }
-
                 document.getElementById("convNum").value = converter;
-
             })
         })
     </script>
